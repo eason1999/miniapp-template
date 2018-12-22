@@ -1,0 +1,7 @@
+/* components/clickMe/clickMe.wxss */
+
+.back-btn {
+    display: block;
+    margin: 0 auto;
+    max-width: 200rpx;
+}

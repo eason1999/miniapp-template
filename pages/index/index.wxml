@@ -1,0 +1,20 @@
+<!--index.wxml-->
+
+<wxs src="./../../wxs/filter.wxs" module="filter" />
+<!--导入模板-->
+<import src="../../template/templates/template.wxml" />
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="txt">hello, {{userInfo.nickName}}</text>
+      <text class="txt">{{filter.date(date, '%Y-%m-%d')}} {{filter.date(date, '%H:%M:%S')}}</text>
+    </block>
+    <!-- 模板文件 -->
+    <template is="templates" ></template>
+  </view>
+</view>
+
+<!-- 退出登录 -->
+<click-me></click-me>

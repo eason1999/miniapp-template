@@ -1,0 +1,7 @@
+{
+    "backgroundColor": "#f2f2f5",
+    "usingComponents": {
+        "click-me": "/components/clickMe/clickMe"
+    },
+    "navigationBarTitleText": "首页"
+}

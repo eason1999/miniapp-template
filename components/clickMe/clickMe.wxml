@@ -1,0 +1,5 @@
+<!--components/fixedAd/fixedAd.wxml-->
+<!-- 活动配置 -->
+<view class="back-btn">
+    <button bindtap="handleClick">退出登录</button>
+</view>

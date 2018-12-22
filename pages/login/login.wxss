@@ -1,0 +1,23 @@
+/* pages/login/login.wxss */
+page {
+    background-color: #fff;
+}
+view {
+    box-sizing: border-box;
+}
+.login-header {
+    width: 90%; height: 300rpx; line-height: 300rpx; border-bottom: 1rpx solid #f8f8f8; text-align: center;
+    margin: 0 auto; font-size: 40rpx; color: #282828;
+}
+.login-main {
+    width: 90%; height: auto;margin: 0 auto;
+}
+.login-note {
+    font-size: 32rpx; color: rgba(0,0,0,0.85); margin: 20rpx 0 20rpx; line-height: 1.6
+}
+.login-li {
+    font-size: 24rpx; color: #b9b9b9; line-height: 1.8;
+}
+.login-btn {
+    margin-top: 60rpx;
+}

@@ -1,0 +1,8 @@
+/* template css */
+.tpl {
+    display: block;
+    text-align: center;
+    font-size: 30rpx;
+    margin: 20rpx auto;
+    color: #aaa;
+}

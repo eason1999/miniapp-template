@@ -1,0 +1,7 @@
+<!-- 回到首页 -->
+
+<template name="templates">
+    <view>
+        <text class="tpl">欢迎使用小程序</text>
+    </view>
+</template>

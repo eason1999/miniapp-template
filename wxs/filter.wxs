@@ -1,0 +1,99 @@
+
+/**
+ * @description 时间格式化过滤器
+ * @params timestamp 毫秒时间
+ * @params format 格式化字符串
+ * @return formated DateTime String
+ */
+function date(timestamp, format) {
+    var currentDate = getDate(timestamp);
+    var year, month, date, hours, minutes, seconds;
+    var fullYear, fullMonth, fullDate, fullHours, fullMinutes, fullSeconds;
+
+    year = currentDate.getFullYear();
+    month = currentDate.getMonth() + 1;
+    date = currentDate.getDate();
+    hours = currentDate.getHours();
+    minutes = currentDate.getMinutes();
+    seconds = currentDate.getSeconds();
+
+    fullYear = year.toString();
+    fullMonth = (month < 10 ? '0' : '') + month;
+    fullDate = (date < 10 ? '0' : '') + date;
+    fullHours = (hours < 10 ? '0' : '') + hours;
+    fullMinutes = (minutes < 10 ? '0' : '') + minutes;
+    fullSeconds = (seconds < 10 ? '0' : '') + seconds;
+
+    return format.replace(getRegExp("%T", 'g'), "%H:%M:%S")
+        .replace(getRegExp('%F', 'g'), "%Y-%m-%d")
+        .replace(getRegExp('%D', 'g'), "mm/dd/yy")
+        .replace(getRegExp('%Y', 'g'), fullYear)
+        .replace(getRegExp('%m', 'g'), fullMonth)
+        .replace(getRegExp('%d', 'g'), fullDate)
+        .replace(getRegExp('%H', 'g'), fullHours)
+        .replace(getRegExp('%M', 'g'), fullMinutes)
+        .replace(getRegExp('%S', 'g'), fullSeconds)
+        .replace(getRegExp('yyyy', 'g'), fullYear)
+        .replace(getRegExp('yy', 'g'), fullYear.slice(fullYear.length - 2))
+        .replace(getRegExp('MM', 'g'), fullMonth)
+        .replace(getRegExp('dd', 'g'), fullDate)
+        .replace(getRegExp('hh', 'g'), fullHours)
+        .replace(getRegExp('mm', 'g'), fullMinutes)
+        .replace(getRegExp('ss', 'g'), fullSeconds)
+}
+
+/**
+ * @description 倒计时
+ * @params millSeconds 结束时间(毫秒)
+ * @params currentTime 当前时间(毫秒)
+ * @return HH:MM:SS
+ */
+function countDown(millSeconds, currentTime) {
+    var time = parseInt((millSeconds - currentTime) / 1000);
+    var hours, minutes, seconds;
+
+    if (time <= 0 || isNaN(time)) {
+        return "00:00:00";
+    }
+
+    hours = parseInt(parseInt(time / 86400) * 86400 + time % 86400);
+    minutes = parseInt(hours % 3600 / 60);
+    seconds = parseInt(hours % 3600 % 60);
+    hours = parseInt(hours / 3600);
+
+    hours = (hours < 10 ? '0' : '') + hours;
+    minutes = (minutes < 10 ? '0' : '') + minutes;
+    seconds = (seconds < 10 ? '0' : '') + seconds;
+
+    return hours + ":" + minutes + ":" + seconds;
+}
+
+/**
+ * @descriptions 解析并识别活动地址类型是h5或小程序
+ */
+function parseActivityUrl(url) {
+    if (getRegExp('^http').test(url)) {
+        return "/pages/activity/webview/webview?activityUrl=" + encodeURIComponent(url)
+    } else {
+        return "/" + url.replace(getRegExp('^\/'), '');
+    }
+}
+
+/**
+ * @desctiption 数值过万显格式
+ */
+function toTenThousand(val) {
+    val = isNaN(val) ? 0 : val;
+    if (val < 10000) {
+        return val;
+    }
+    return parseInt(val / 1000) / 10 + "万";
+}
+
+
+module.exports = {
+    date: date,
+    countDown: countDown,
+    toTenThousand: toTenThousand,
+    parseActivityUrl: parseActivityUrl
+};
